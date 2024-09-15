@@ -1,0 +1,718 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LeadSoft.TdcSP2024.RavenDB.DataModel.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address">
+            <summary>
+            Representa um endereço, incluindo título, rua, número, estado (UF), cidade, país e tipo de endereço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.Title">
+            <summary>
+            Título descritivo do endereço (exemplo: "Residencial" ou "Comercial").
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.Street">
+            <summary>
+            Nome da rua do endereço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.Number">
+            <summary>
+            Número da residência ou prédio no endereço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.UF">
+            <summary>
+            Unidade Federativa (UF) ou estado do endereço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.City">
+            <summary>
+            Cidade onde o endereço está localizado.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.Country">
+            <summary>
+            País do endereço. O valor padrão é "Brasil".
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.Type">
+            <summary>
+            Tipo de endereço (ex: padrão, cobrança). O valor padrão é <see cref="F:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Enums.AddressType.Standard"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address.SetTitle(System.String)">
+            <summary>
+            Define o título do endereço.
+            </summary>
+            <param name="title">Título descritivo do endereço (exemplo: "Residencial" ou "Comercial").</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer">
+            <summary>
+            Representa um cliente com informações básicas, incluindo identificador, nome, data de nascimento, status de atividade, contatos de e-mail e endereços.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Id">
+            <summary>
+            Identificador único do cliente.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Name">
+            <summary>
+            Nome do cliente.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Birthdate">
+            <summary>
+            Data de nascimento do cliente.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.IsActive">
+            <summary>
+            Indica se o cliente está ativo ou inativo.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.EmailContacts">
+            <summary>
+            Lista de contatos de e-mail do cliente. A chave é o endereço de e-mail, e o valor é um objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact"/>.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Addresses">
+            <summary>
+            Lista de endereços do cliente.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.#ctor(System.String,System.DateTime)">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> com nome e data de nascimento.
+            </summary>
+            <param name="name">Nome do cliente.</param>
+            <param name="birthdate">Data de nascimento do cliente.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.SetName(System.String)">
+            <summary>
+            Define o nome do cliente.
+            </summary>
+            <param name="name">Nome do cliente.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.SetBirthdate(System.DateTime)">
+            <summary>
+            Define a data de nascimento do cliente.
+            </summary>
+            <param name="birthdate">Data de nascimento do cliente.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Lançado se a data de nascimento for maior que a data atual.</exception>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Deactivate">
+            <summary>
+            Desativa o cliente, alterando seu status para inativo.
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.Activate">
+            <summary>
+            Ativa o cliente, alterando seu status para ativo.
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.GetPrimaryEmail">
+            <summary>
+            Obtém o contato de e-mail principal do cliente.
+            </summary>
+            <returns>Retorna um par chave/valor representando o endereço de e-mail principal e seu contato associado.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.AddEmail(System.String,System.Boolean,System.Nullable{LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Enums.EmailType})">
+            <summary>
+            Adiciona um novo e-mail ao cliente.
+            </summary>
+            <param name="address">Endereço de e-mail a ser adicionado.</param>
+            <param name="isPrimary">Indica se o e-mail é o principal.</param>
+            <param name="type">Tipo de e-mail (opcional).</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.RemoveEmail(System.String)">
+            <summary>
+            Remove um endereço de e-mail da lista de contatos do cliente.
+            </summary>
+            <param name="address">Endereço de e-mail a ser removido.</param>
+            <returns>Retorna um valor booleano indicando se o e-mail foi removido com sucesso.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.AddAddress(System.String,LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address)">
+            <summary>
+            Adiciona um novo endereço ao cliente.
+            </summary>
+            <param name="title">Título do endereço (exemplo: "Residencial" ou "Comercial").</param>
+            <param name="address">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address"/> contendo as informações do endereço.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer.RemoveAddress(System.String)">
+            <summary>
+            Remove um endereço da lista de endereços do cliente.
+            </summary>
+            <param name="title">Título do endereço a ser removido.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact">
+            <summary>
+            Representa um contato de e-mail, com a indicação se é o e-mail principal e o tipo de e-mail.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.IsPrimary">
+            <summary>
+            Indica se este é o e-mail principal do cliente.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.Type">
+            <summary>
+            Tipo do e-mail (ex: pessoal, comercial). O valor padrão é <see cref="F:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Enums.EmailType.Personal"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.#ctor(System.Boolean,System.Nullable{LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Enums.EmailType})">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact"/> com valores para o status de e-mail principal e o tipo de e-mail.
+            </summary>
+            <param name="isPrimary">Indica se este é o e-mail principal do cliente.</param>
+            <param name="type">Tipo do e-mail (opcional). Se não fornecido, o tipo será definido como <see cref="F:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Enums.EmailType.Personal"/>.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.SetPrimary">
+            <summary>
+            Define o e-mail como o principal.
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact.UnsetPrimary">
+            <summary>
+            Remove o status de e-mail principal, tornando-o secundário.
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.EmailContact"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer">
+            <summary>
+            Representa um consumidor no sistema, com identificador, nome e endereço de e-mail.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer.Id">
+            <summary>
+            Identificador único do consumidor.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer.Name">
+            <summary>
+            Nome do consumidor.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer.EmailAddress">
+            <summary>
+            Endereço de e-mail do consumidor, validado pelo atributo <see cref="T:System.ComponentModel.DataAnnotations.EmailAddressAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer.op_Implicit(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer)~LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer">
+            <summary>
+            Conversão implícita de um objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> para <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer"/>.
+            </summary>
+            <param name="customer">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> a ser convertido.</param>
+            <returns>
+            Uma nova instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer"/> com os dados do cliente, ou <see langword="null"/> se o cliente for nulo.
+            </returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item">
+            <summary>
+            Representa um item dentro de um pedido, incluindo o produto, categoria, quantidade e preço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.Product">
+            <summary>
+            Produto associado ao item.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.Amount">
+            <summary>
+            Quantidade do produto no item.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.Price">
+            <summary>
+            Preço do produto no item.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.Total">
+            <summary>
+            Total do item, calculado como quantidade multiplicada pelo preço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.Tax">
+            <summary>
+            Imposto aplicado ao item, calculado como 10% do valor total.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item.#ctor(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product,System.Decimal,System.Decimal)">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item"/> com os valores fornecidos para produto, categoria, quantidade e preço.
+            </summary>
+            <param name="product">Produto associado ao item.</param>
+            <param name="amount">Quantidade do produto.</param>
+            <param name="price">Preço do produto.</param>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order">
+            <summary>
+            Representa um pedido no sistema, incluindo o consumidor, itens, entrega, descontos e datas relevantes.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Id">
+            <summary>
+            Identificador único do pedido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Number">
+            <summary>
+            Número do pedido, calculado com base no ano atual e o identificador numérico do pedido.
+            O número é derivado multiplicando o ano atual por 10.000 e adicionando os números contidos no identificador.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Consumer">
+            <summary>
+            Consumidor (cliente) associado ao pedido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Items">
+            <summary>
+            Lista de itens do pedido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Shipping">
+            <summary>
+            Informações de envio associadas ao pedido, como tipo de entrega e status.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Discount">
+            <summary>
+            Desconto aplicado ao pedido, que deve ser entre 0% e 80%.
+            O desconto é representado como um valor decimal (0 a 0.8), onde 0 equivale a 0% e 0.8 equivale a 80%.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.DiscountPercent">
+            <summary>
+            Representação do desconto em porcentagem, formatado conforme a cultura brasileira (ex.: 10,00%).
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.When">
+            <summary>
+            Data e hora em que o pedido foi criado. Por padrão, é a data e hora atuais em UTC.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.ClosedAt">
+            <summary>
+            Data e hora em que o pedido foi fechado, se aplicável. Se não foi fechado, será <see langword="null"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.IsClosed">
+            <summary>
+            Verifica se o pedido foi fechado.
+            </summary>
+            <returns>Retorna <see langword="true"/> se o pedido já estiver fechado, caso contrário, <see langword="false"/>.</returns>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.TotalItems">
+            <summary>
+            Total do valor dos itens no pedido, calculado como a soma do valor total de todos os itens.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.TotalItemsCurrency">
+            <summary>
+            Representação do valor total dos itens, formatado como moeda conforme a cultura brasileira (ex.: R$ 1.000,00).
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Taxes">
+            <summary>
+            Total dos impostos aplicados aos itens do pedido, calculado como a soma dos impostos de cada item.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.TaxesCurrency">
+            <summary>
+            Representação do valor dos impostos, formatado como moeda conforme a cultura brasileira (ex.: R$ 200,00).
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Total">
+            <summary>
+            Valor total do pedido, incluindo itens, impostos e desconto.
+            O valor total é calculado como: (TotalItems + Taxes) - (TotalItems * Discount).
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.TotalCurrency">
+            <summary>
+            Representação do valor total do pedido, formatado como moeda conforme a cultura brasileira (ex.: R$ 1.200,00).
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.SetDiscount(System.Decimal)">
+            <summary>
+            Define o desconto do pedido, garantindo que o valor esteja entre 0% e 80%.
+            </summary>
+            <param name="discount">Desconto a ser aplicado (em porcentagem).</param>
+            <returns>Retorna a própria instância do pedido com o desconto aplicado.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.SetConsumer(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer)">
+            <summary>
+            Define o consumidor (cliente) associado ao pedido.
+            </summary>
+            <param name="customer">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer"/> que representa o consumidor.</param>
+            <returns>Retorna a própria instância do pedido com o cliente associado.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.SetShipping(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping)">
+            <summary>
+            Define as informações de envio para o pedido.
+            </summary>
+            <param name="shipping">Objeto <see cref="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Shipping"/> contendo as informações de envio.</param>
+            <returns>Retorna a instância do pedido com a entrega definida.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order.Close">
+            <summary>
+            Fecha o pedido, verificando se há cliente, itens e informações de entrega.
+            </summary>
+            <returns>Retorna a própria instância do pedido após o fechamento.</returns>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Lançado se o pedido já estiver fechado ou se faltar cliente, itens ou informações de entrega.</exception>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Enums">
+            <summary>
+            Contém enumeradores relacionados ao pedido, como tipo e status do envio.
+            </summary>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Enums.OrderShippingType">
+            <summary>
+            Tipos de envio de pedido.
+            </summary>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Enums.OrderShippingStatus">
+            <summary>
+            Status do envio de pedido.
+            </summary>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product">
+            <summary>
+            Representa um produto dentro de um pedido, incluindo o identificador, nome e a categoria associada.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.Id">
+            <summary>
+            Identificador único do produto.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.Name">
+            <summary>
+            Nome do produto.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.CategoryId">
+            <summary>
+            Identificador da categoria à qual o produto pertence.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.Category">
+            <summary>
+            Nome da categoria do produto.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma nova instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.SetCategory(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category)">
+            <summary>
+            Define a categoria do produto, atribuindo o identificador e o nome da categoria.
+            </summary>
+            <param name="category">Objeto <see cref="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.Category"/> representando a categoria do produto.</param>
+            <returns>Retorna a instância do produto com a categoria atribuída.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product.op_Implicit(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product)~LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product">
+            <summary>
+            Converte implicitamente um objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> para <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product"/>.
+            </summary>
+            <param name="product">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> a ser convertido.</param>
+            <returns>Uma nova instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product"/> com os dados do produto fornecido.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping">
+            <summary>
+            Representa os detalhes de envio de um pedido, incluindo tipo de envio, status e endereço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.Type">
+            <summary>
+            Tipo de envio associado ao pedido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.Status">
+            <summary>
+            Status atual do envio.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.Address">
+            <summary>
+            Endereço de entrega do pedido, se aplicável.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.#ctor(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Enums.OrderShippingType,LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Address)">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping"/> com o tipo de envio e, opcionalmente, o endereço.
+            </summary>
+            <param name="type">Tipo de envio.</param>
+            <param name="address">Endereço de entrega, se aplicável.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.Cancel">
+            <summary>
+            Cancela o envio do pedido, alterando o status para "Cancelado".
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping.MoveToNextStatus">
+            <summary>
+            Avança o status do envio para o próximo estágio, até que seja marcado como "Entregue".
+            </summary>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category">
+            <summary>
+            Representa uma categoria de produto, incluindo identificador e nome, com suporte para validação de dados.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category.Id">
+            <summary>
+            Identificador único da categoria.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category.Name">
+            <summary>
+            Nome da categoria, que é um campo obrigatório e validado quanto ao tamanho.
+            </summary>
+            <remarks>
+            O nome deve ter entre 1 e 127 caracteres e é validado usando as anotações <see cref="T:System.ComponentModel.DataAnnotations.RequiredAttribute"/> e <see cref="T:System.ComponentModel.DataAnnotations.RangeAttribute"/>.
+            </remarks>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category.#ctor(System.String)">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category"/> com o nome fornecido.
+            </summary>
+            <param name="name">Nome da categoria de produto.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category.SetName(System.String)">
+            <summary>
+            Define o nome da categoria de produto.
+            </summary>
+            <param name="name">Nome da categoria de produto.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price">
+            <summary>
+            Representa as informações de preço, incluindo título, valor, custo, margem e datas de validade.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.Title">
+            <summary>
+            Título ou descrição do preço (exemplo: "Preço de venda", "Preço promocional").
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.Value">
+            <summary>
+            Valor do preço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.Cost">
+            <summary>
+            Custo associado ao produto ou serviço.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.When">
+            <summary>
+            Data em que o preço foi definido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.Until">
+            <summary>
+            Data opcional até quando o preço é válido.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.Margin">
+            <summary>
+            Margem calculada com base no valor e no custo. Retorna zero se o valor for zero.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.#ctor(System.String,System.Decimal,System.Decimal,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/> com os valores fornecidos para título, valor, custo e datas.
+            </summary>
+            <param name="title">Título ou descrição do preço.</param>
+            <param name="value">Valor do preço.</param>
+            <param name="cost">Custo associado ao preço.</param>
+            <param name="when">Data opcional em que o preço foi definido. Se não fornecido, usa a data atual.</param>
+            <param name="until">Data opcional até quando o preço é válido.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.SetPrice(System.Decimal,System.Decimal)">
+            <summary>
+            Define o valor e o custo do preço.
+            </summary>
+            <param name="value">Valor do preço.</param>
+            <param name="cost">Custo associado ao preço. O valor padrão é zero.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/> para encadeamento de métodos.</returns>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Lançado se o custo for maior que o valor, ou se o custo for negativo.</exception>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price.SetTitle(System.String)">
+            <summary>
+            Define o título do preço.
+            </summary>
+            <param name="title">Título ou descrição do preço.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product">
+            <summary>
+            Representa um produto, incluindo identificador, nome, categoria e uma lista de preços associados.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.Id">
+            <summary>
+            Identificador único do produto.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.Name">
+            <summary>
+            Nome do produto.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.CategoryId">
+            <summary>
+            Identificador da categoria associada ao produto.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.Prices">
+            <summary>
+            Lista de preços associados ao produto, onde a chave é o identificador único e o valor é o objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.#ctor">
+            <summary>
+            Construtor padrão que inicializa uma instância vazia de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/>.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.#ctor(System.String)">
+            <summary>
+            Construtor que inicializa uma instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> com o nome fornecido.
+            </summary>
+            <param name="name">Nome do produto.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.SetName(System.String)">
+            <summary>
+            Define o nome do produto.
+            </summary>
+            <param name="name">Nome do produto.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.SetCategory(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category)">
+            <summary>
+            Define a categoria do produto.
+            </summary>
+            <param name="category">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category"/> representando a categoria do produto.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> para encadeamento de métodos.</returns>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.BadRequestAppException">Lançado se o identificador da categoria for nulo ou inválido.</exception>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.GetPrice">
+            <summary>
+            Obtém o preço mais recente do produto, considerando a data de validade.
+            </summary>
+            <returns>Retorna o preço atual do produto.</returns>
+            <exception cref="T:LeadSoft.Common.Library.Exceptions.NotFoundAppException">Lançado se nenhum preço estiver disponível.</exception>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.GetPrices">
+            <summary>
+            Obtém todos os preços do produto, ordenados pela data de definição do preço (do mais recente ao mais antigo).
+            </summary>
+            <returns>Retorna uma lista ordenada de preços associados ao produto.</returns>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product.AddPrice(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price)">
+            <summary>
+            Adiciona um novo preço ao produto.
+            </summary>
+            <param name="price">Objeto <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price"/> representando o preço a ser adicionado.</param>
+            <returns>Retorna a própria instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product"/> para encadeamento de métodos.</returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.IValidation">
+            <summary>
+            Define um contrato para validação de objetos.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.IValidation.IsValid(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Realiza a validação do objeto atual e retorna os resultados da validação.
+            </summary>
+            <param name="oValidationResults">Uma lista de <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult"/> que será preenchida com os resultados da validação.</param>
+            <returns>
+            Retorna <see langword="true"/> se o objeto for válido, ou <see langword="false"/> se houver erros de validação.
+            </returns>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Validation">
+            <summary>
+            Classe abstrata base que implementa o comportamento de validação para objetos. 
+            Esta classe implementa a interface <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.IValidation"/> para fornecer um mecanismo padrão de validação.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Validation.IsValid(System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Realiza a validação do objeto atual utilizando as anotações de dados aplicadas em suas propriedades.
+            </summary>
+            <param name="oValidationResults">Lista que será preenchida com os resultados da validação, caso existam erros.</param>
+            <returns>
+            Retorna <see langword="true"/> se a validação for bem-sucedida, ou <see langword="false"/> se houver erros de validação.
+            </returns>
+            <remarks>
+            O método utiliza o <see cref="M:System.ComponentModel.DataAnnotations.Validator.TryValidateObject(System.Object,System.ComponentModel.DataAnnotations.ValidationContext,System.Collections.Generic.ICollection{System.ComponentModel.DataAnnotations.ValidationResult})"/> para verificar se o objeto atende às regras de validação definidas pelas anotações de dados. 
+            Se a validação for bem-sucedida, a lista <paramref name="oValidationResults"/> é esvaziada. Caso contrário, ela é preenchida com os erros de validação.
+            </remarks>
+        </member>
+    </members>
+</doc>
