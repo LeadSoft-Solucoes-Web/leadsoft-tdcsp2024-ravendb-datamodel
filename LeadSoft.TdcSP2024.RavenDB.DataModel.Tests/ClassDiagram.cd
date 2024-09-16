@@ -44,23 +44,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Consumer">
-    <Position X="4.5" Y="6.5" Width="1.5" />
+    <Position X="4" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAACAEAAAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAEAAAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Domain\Entities\Orders\Consumer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Item">
-    <Position X="8" Y="4.5" Width="1.5" />
+    <Position X="4" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAQAgAAAAAAAAAACAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Domain\Entities\Orders\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Order">
-    <Position X="6.25" Y="4.5" Width="1.5" />
+    <Position X="2.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABCAAAAACAACAAAAEAQAAAAAAQAREAAAgACAgCAAAA=</HashCode>
+      <HashCode>AQBCCAAIACIACAAAAEAQAAAQAAQAREAAAgACIgCAAAA=</HashCode>
       <FileName>Domain\Entities\Orders\Order.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -87,35 +87,35 @@
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Product">
-    <Position X="9.75" Y="4.5" Width="1.5" />
+    <Position X="5.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAIAgAAAAAAAAQAAAAAAAEAAAAAAAAACAA=</HashCode>
       <FileName>Domain\Entities\Orders\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Orders.Shipping">
-    <Position X="9.75" Y="7.25" Width="1.5" />
+    <Position X="5.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEQAAAAAAAAAAAAAAAAAAAAAACAYAAAAAAAAA=</HashCode>
       <FileName>Domain\Entities\Orders\Shipping.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Categories.Category">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="12.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAIIAAAAAAAAAQAAAAAAAAAQAAAQAAAAAA=</HashCode>
       <FileName>Domain\Entities\Products\Categories\Category.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Price">
-    <Position X="8" Y="0.5" Width="1.5" />
+    <Position X="11" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEACAAAEABEAAAABAAAAAAAAEAAAAgAAAAAAA=</HashCode>
       <FileName>Domain\Entities\Products\Price.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="9.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAACAAAAAQAIIgAAEAAAAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Domain\Entities\Products\Product.cs</FileName>

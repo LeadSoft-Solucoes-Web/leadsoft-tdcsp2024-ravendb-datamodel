@@ -39,6 +39,7 @@
 		<Optimize>false</Optimize>
 		<DebugType>embedded</DebugType>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+		<NoWarn>1701;1702;CA2007</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -46,6 +47,7 @@
 		<DebugType>embedded</DebugType>
 		<Optimize>true</Optimize>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+		<NoWarn>1701;1702;CA2007</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

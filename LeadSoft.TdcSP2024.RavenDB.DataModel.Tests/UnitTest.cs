@@ -512,7 +512,10 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
         {
             using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
 
-            IList<Order> orders = await asyncSession.Query<Order>()
+            var orders = await asyncSession.Query<Order>()
+                                                    .Include(o => o.Consumer.Id)
+                                                    .Include(o => o.Items.Select(i => i.Product.Id))
+                                                    .Include(o => o.Items.Select(i => i.Product.CategoryId))
                                                     .Where(o => o.Shipping != null &&
                                                                 o.Shipping.Type != OrderShippingType.PickUp &&
                                                                 o.Shipping.Address != null &&
@@ -520,6 +523,19 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
                                                                 o.Discount == 0)
                                                     .OrderByDescending(o => o.When)
                                                     .ToListAsync();
+            var select = orders.Select(o => new
+            {
+                o.Number,
+                o.When,
+                o.Items.Count,
+                o.TotalItemsCurrency,
+                o.DiscountPercent,
+                o.TotalCurrency,
+                o.Consumer.Name,
+                o.Shipping?.Type,
+                o.Shipping?.Status,
+                o.Shipping?.Address?.UF
+            });
         }
 
         //[Fact]
