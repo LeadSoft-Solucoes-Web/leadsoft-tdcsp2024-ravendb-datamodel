@@ -18,91 +18,92 @@ using Product = LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Produ
 
 namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
 {
+    /// <summary>
+    /// Classe responsável por configurar e gerenciar a conexão com o banco de dados RavenDB.
+    /// Esta implementação será apresentada na TDC 2024 SP pela LeadSoft, destacando a eficiência do RavenDB.
+    /// </summary>
     public class DatabaseFixture : IDisposable
     {
-        // Singleton
+        /// <summary>
+        /// Singleton para gerenciar a conexão com o RavenDB.
+        /// </summary>
         public IDocumentStore Store { get; private set; }
 
+        /// <summary>
+        /// Construtor que inicializa o <see cref="IDocumentStore"/> com as configurações do RavenDB.
+        /// Utiliza o certificado de segurança para autenticação e define a URL do banco de dados.
+        /// </summary>
         public DatabaseFixture() => Store = new DocumentStore
         {
             Urls =
                 [
-                    "https://a.leadsoft.ravendb.community/"
+                    "https://a.leadsoft.ravendb.community/" // URL do servidor RavenDB da LeadSoft
                 ],
-            Database = "LeadSoft",
+            Database = "LeadSoft", // Nome da base de dados
             Certificate = Assembly.GetExecutingAssembly()
-                                               .GetEmbeddedResourceStream("LeadSoft_TDC_2024.pfx")
-                                               .ReadCertificate("weloveravendb")
+                                  .GetEmbeddedResourceStream("LeadSoft_TDC_2024.pfx") // Certificado embutido no assembly
+                                  .ReadCertificate("weloveravendb") // Senha do certificado
         }.Initialize();
 
+        /// <summary>
+        /// Método responsável por liberar os recursos alocados pela conexão com o banco de dados RavenDB.
+        /// </summary>
         public void Dispose() => Store.Dispose();
     }
 
+    /// <summary>
+    /// Unidade de testes criada para demonstração durante a apresentação no TDC 2024 SP, junto ao RavenDB.
+    /// O foco é apresentar a eficiência na modelagem e no desempenho com o uso do RavenDB.
+    /// </summary>
     public class UnitTest : IClassFixture<DatabaseFixture>
     {
-        DatabaseFixture databaseFixture;
+        private readonly DatabaseFixture databaseFixture;
 
+        /// <summary>
+        /// Construtor que recebe o fixture do banco de dados para garantir o reuso da conexão entre os testes.
+        /// </summary>
+        /// <param name="fixture">Instância de <see cref="DatabaseFixture"/> que gerencia a conexão com o banco de dados.</param>
         public UnitTest(DatabaseFixture fixture)
         {
             databaseFixture = fixture;
         }
 
-        //[Fact]
-        //public async Task Storing()
-        //{
-        //    using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
-        //    Category category = new Category
-        //    {
-        //        Name = "Database Category",
-        //    };
-
-        //    await asyncSession.StoreAsync(category);                        // Assign an 'Id' and collection (Categories)
-        //                                                                    // and start tracking an entity
-
-        //    Product product = new Product
-        //    {
-        //        Name = "RavenDB database",
-        //        Category = category.Id,
-        //        UnitsInStock = 10
-        //    };
-
-        //    await asyncSession.StoreAsync(product);                         // Assign an 'Id' and collection (Products)
-        //                                                                    // and start tracking an entity
-
-
-        //    await asyncSession.SaveChangesAsync();                          // Send to the Server
-        //                                                                    // one request processed in one transaction
-        //}
-
+        /// <summary>
+        /// Teste responsável por realizar operações em massa de inserção no RavenDB.
+        /// Insere categorias, clientes e produtos em grandes quantidades de maneira eficiente.
+        /// </summary>
         [Fact]
         public async Task BulkInsert()
         {
             BulkInsertOperation bulkInsert = null;
             try
             {
-                bulkInsert = databaseFixture.Store.BulkInsert();
+                bulkInsert = databaseFixture.Store.BulkInsert(); // Inicia a operação de inserção em massa
 
                 foreach (Category category in Category.GetSamples())
                     if (category.IsValid(out _))
-                        await bulkInsert.StoreAsync(category);
+                        await bulkInsert.StoreAsync(category); // Insere as categorias no banco
 
                 foreach (Customer customer in Customer.GetSamples())
                     if (customer.IsValid(out _))
-                        await bulkInsert.StoreAsync(customer);
+                        await bulkInsert.StoreAsync(customer); // Insere os clientes no banco
 
                 foreach (Product product in Product.GetSamples())
                     if (product.IsValid(out _))
-                        await bulkInsert.StoreAsync(product);
+                        await bulkInsert.StoreAsync(product); // Insere os produtos no banco
             }
             finally
             {
                 if (bulkInsert != null)
                 {
-                    await bulkInsert.DisposeAsync();
+                    await bulkInsert.DisposeAsync(); // Finaliza e libera a operação de inserção em massa
                 }
             }
         }
 
+        /// <summary>
+        /// Teste responsável por atualizar em massa os produtos no banco de dados, associando-os às suas respectivas categorias.
+        /// </summary>
         [Fact]
         public async Task BulkUpdate()
         {
@@ -111,21 +112,22 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
             {
                 using IAsyncDocumentSession readSession = databaseFixture.Store.OpenAsyncSession();
 
-                IList<Category> categories = await readSession.Query<Category>().ToListAsync();
-                IList<Product> products = await readSession.Query<Product>().ToListAsync();
+                IList<Category> categories = await readSession.Query<Category>().ToListAsync(); // Carrega as categorias do banco
+                IList<Product> products = await readSession.Query<Product>().ToListAsync(); // Carrega os produtos do banco
 
                 bulkInsert = databaseFixture.Store.BulkInsert();
 
                 foreach (Product product in products)
                 {
+                    // Associa a categoria correta ao produto
                     Category category = categories.FirstOrDefault(c => c.Name.Equals(Category.GetNameByProduct(product.Name)));
 
                     if (category.IsNotNull())
                     {
-                        product.SetCategory(category);
+                        product.SetCategory(category); // Atualiza a categoria do produto
 
                         if (product.IsValid(out _))
-                            await bulkInsert.StoreAsync(product, product.Id);
+                            await bulkInsert.StoreAsync(product, product.Id); // Armazena o produto atualizado no banco
                     }
                 }
             }
@@ -133,11 +135,14 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
             {
                 if (bulkInsert != null)
                 {
-                    await bulkInsert.DisposeAsync();
+                    await bulkInsert.DisposeAsync(); // Finaliza a operação de atualização em massa
                 }
             }
         }
 
+        /// <summary>
+        /// Teste responsável por gerar pedidos em massa para diferentes clientes e produtos.
+        /// </summary>
         [Fact]
         public async Task BulkOrders()
         {
@@ -145,11 +150,11 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
 
             IList<Customer> customers = await session.Query<Customer>()
                                                      .Where(c => c.IsActive)
-                                                     .ToListAsync();
+                                                     .ToListAsync(); // Carrega os clientes ativos
             IList<Product> products = await session.Query<Product>()
-                                                   .ToListAsync();
+                                                   .ToListAsync(); // Carrega todos os produtos
 
-
+            // Gera pedidos para diversos personagens, simulando ordens de compra de armas de Star Wars
             await GetOrder_DarthVader(session, customers, products);
             await GetOrder_LandoCalrissian(session, customers, products);
             await GetOrder_ObiWanKenobi(session, customers, products);
@@ -165,11 +170,14 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
             await GetOrder_EmperorPalpatine(session, customers, products);
             await GetOrder_Yoda(session, customers, products);
 
-            await session.SaveChangesAsync();
+            await session.SaveChangesAsync(); // Salva todas as alterações no banco de dados
         }
 
         #region [ Orders ]
 
+        /// <summary>
+        /// Gera um pedido para o personagem Darth Vader com base nos produtos selecionados.
+        /// </summary>
         private async Task GetOrder_DarthVader(IAsyncDocumentSession session, IList<Customer> customers, IList<Product> products)
         {
             Customer customer = customers.FirstOrDefault(c => c.Name.Contains("Darth"));
@@ -507,22 +515,28 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
 
         #endregion
 
+        /// <summary>
+        /// Gera um relatório de pedidos baseado em critérios específicos, como desconto zero e envio em determinados estados.
+        /// </summary>
         [Fact]
         public async Task GetOrderReportAsync()
         {
             using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
 
+            // Query para selecionar pedidos com critérios específicos
             var orders = await asyncSession.Query<Order>()
-                                                    .Include(o => o.Consumer.Id)
-                                                    .Include(o => o.Items.Select(i => i.Product.Id))
-                                                    .Include(o => o.Items.Select(i => i.Product.CategoryId))
-                                                    .Where(o => o.Shipping != null &&
-                                                                o.Shipping.Type != OrderShippingType.PickUp &&
-                                                                o.Shipping.Address != null &&
-                                                                o.Shipping.Address.UF.In(UF.RJ, UF.MG, UF.SP, UF.ES) &&
-                                                                o.Discount == 0)
-                                                    .OrderByDescending(o => o.When)
-                                                    .ToListAsync();
+                                           .Include(o => o.Consumer.Id)
+                                           .Include(o => o.Items.Select(i => i.Product.Id))
+                                           .Include(o => o.Items.Select(i => i.Product.CategoryId))
+                                           .Where(o => o.Shipping != null &&
+                                                       o.Shipping.Type != OrderShippingType.PickUp &&
+                                                       o.Shipping.Address != null &&
+                                                       o.Shipping.Address.UF.In(UF.RJ, UF.MG, UF.SP, UF.ES) &&
+                                                       o.Discount == 0)
+                                           .OrderByDescending(o => o.When)
+                                           .ToListAsync();
+
+            // Seleciona os dados relevantes do relatório
             var select = orders.Select(o => new
             {
                 o.Number,
@@ -537,76 +551,5 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
                 o.Shipping?.Address?.UF
             });
         }
-
-        //[Fact]
-        //public async Task ApplyChanges()
-        //{
-        //    using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
-        //    string productId = "products/1-A";
-
-        //    Product product = await asyncSession
-        //        .Include<Product>(x => x.Category)                          // Include Category
-        //        .LoadAsync(productId);                                      // Load the Product and start tracking
-
-        //    Category category = await asyncSession
-        //        .LoadAsync<Category>(product.Category);                     // No remote calls,
-        //                                                                    // Session contains this entity from .Include
-
-        //    product.Name = "RavenDB";                                       // Apply changes
-        //    category.Name = "Database";
-
-        //    await asyncSession.SaveChangesAsync();                          // Synchronize with the Server
-        //                                                                    // one request processed in one transaction
-
-        //    Assert.Equal("RavenDB", product.Name);
-        //    Assert.Equal("Database", category.Name);
-        //}
-
-        //[Fact]
-        //public async Task QueryingAndPaging()
-        //{
-        //    using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
-        //    List<string> productNames = await asyncSession                  // Query for Products
-        //        .Query<Product>()
-        //        .Statistics(out QueryStatistics stats)
-        //        .Where(x => x.UnitsInStock > 5 && x.UnitsInStock < 11)      // Filter
-        //        .Skip(0).Take(10)                                           // Page
-        //        .Select(x => x.Name)                                        // Project
-        //        .ToListAsync();                                             // Materialize query
-
-        //    Assert.True("RavenDB".In(productNames));
-        //    Assert.True(stats.TotalResults == 10050);                       // Will hold the total number of matching documents (without paging)
-        //}
-
-        //[Fact]
-        //public async Task StoringAttachment()
-        //{
-        //    using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
-        //    using var file1 = File.Open("rook-suit.png", FileMode.Open);
-        //    Product product = await asyncSession
-        //        .Include<Product>(x => x.Category)
-        //        .LoadAsync("products/1-A");
-
-        //    asyncSession.Advanced.Attachments.Store(product.Id, "rook-suit", file1, "image/png");
-
-        //    await asyncSession.SaveChangesAsync();
-        //}
-
-        //[Fact]
-        //public async Task FullTextSearch()
-        //{
-        //    using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
-        //    // Single or multiples terms
-        //    List<Product> products = await asyncSession
-        //        .Query<Product>()
-        //        .Search(x => x.Name, "#999996 #999995", @operator: SearchOperator.Or)          // OR new[] { "#999996 #999995" }
-        //        .Search(x => x.Category, "categories/47-A")                                    // Second Field
-        //                                                                                       //.Search(x => x.Infos, "USA Brasil")                                          //   the term 'USA' OR 'London' in any field within the complex 'Address' object                                                                               // Search in all complex object fields
-        //        .ToListAsync();
-
-        //    Assert.True(products.Any(p => p.Name.Contains("#999996")));
-        //    Assert.True(products.Any(p => p.Name.Contains("#999995")));
-        //    Assert.True(products.Any(p => p.Category.Equals("categories/47-A")));
-        //}
     }
 }

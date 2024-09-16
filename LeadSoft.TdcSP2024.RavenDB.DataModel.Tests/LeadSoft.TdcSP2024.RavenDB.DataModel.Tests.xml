@@ -714,5 +714,65 @@
             Se a validação for bem-sucedida, a lista <paramref name="oValidationResults"/> é esvaziada. Caso contrário, ela é preenchida com os erros de validação.
             </remarks>
         </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture">
+            <summary>
+            Classe responsável por configurar e gerenciar a conexão com o banco de dados RavenDB.
+            Esta implementação será apresentada na TDC 2024 SP pela LeadSoft, destacando a eficiência do RavenDB.
+            </summary>
+        </member>
+        <member name="P:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture.Store">
+            <summary>
+            Singleton para gerenciar a conexão com o RavenDB.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture.#ctor">
+            <summary>
+            Construtor que inicializa o <see cref="T:Raven.Client.Documents.IDocumentStore"/> com as configurações do RavenDB.
+            Utiliza o certificado de segurança para autenticação e define a URL do banco de dados.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture.Dispose">
+            <summary>
+            Método responsável por liberar os recursos alocados pela conexão com o banco de dados RavenDB.
+            </summary>
+        </member>
+        <member name="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest">
+            <summary>
+            Unidade de testes criada para demonstração durante a apresentação no TDC 2024 SP, junto ao RavenDB.
+            O foco é apresentar a eficiência na modelagem e no desempenho com o uso do RavenDB.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.#ctor(LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture)">
+            <summary>
+            Construtor que recebe o fixture do banco de dados para garantir o reuso da conexão entre os testes.
+            </summary>
+            <param name="fixture">Instância de <see cref="T:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.DatabaseFixture"/> que gerencia a conexão com o banco de dados.</param>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.BulkInsert">
+            <summary>
+            Teste responsável por realizar operações em massa de inserção no RavenDB.
+            Insere categorias, clientes e produtos em grandes quantidades de maneira eficiente.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.BulkUpdate">
+            <summary>
+            Teste responsável por atualizar em massa os produtos no banco de dados, associando-os às suas respectivas categorias.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.BulkOrders">
+            <summary>
+            Teste responsável por gerar pedidos em massa para diferentes clientes e produtos.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.GetOrder_DarthVader(Raven.Client.Documents.Session.IAsyncDocumentSession,System.Collections.Generic.IList{LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Customers.Customer},System.Collections.Generic.IList{LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.Domain.Entities.Products.Product})">
+            <summary>
+            Gera um pedido para o personagem Darth Vader com base nos produtos selecionados.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.GetOrderReportAsync">
+            <summary>
+            Gera um relatório de pedidos baseado em critérios específicos, como desconto zero e envio em determinados estados.
+            </summary>
+        </member>
     </members>
 </doc>

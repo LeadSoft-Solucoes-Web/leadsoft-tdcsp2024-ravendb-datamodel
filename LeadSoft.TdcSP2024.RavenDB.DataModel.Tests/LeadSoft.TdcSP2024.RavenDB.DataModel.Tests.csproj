@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/leadsoftlucas/leadsoft-tdcsp2024-ravendb-datamodel</RepositoryUrl>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageIcon>LeadSoft.png</PackageIcon>
-		<PackageProjectUrl>https://www.leadsoft.inf.br/</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/leadsoftlucas/leadsoft-tdcsp2024-ravendb-datamodel</PackageProjectUrl>
 		<ApplicationIcon>LeadSoft.ico</ApplicationIcon>
 		<SignAssembly>False</SignAssembly>
 		<Nullable>enable</Nullable>
@@ -39,7 +39,7 @@
 		<Optimize>false</Optimize>
 		<DebugType>embedded</DebugType>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
-		<NoWarn>1701;1702;CA2007</NoWarn>
+		<NoWarn>1701;1702;CA2007;CA2000</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
