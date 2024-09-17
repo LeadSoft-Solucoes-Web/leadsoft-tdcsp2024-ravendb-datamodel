@@ -516,10 +516,43 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
         #endregion
 
         /// <summary>
-        /// Gera um relatório de pedidos baseado em critérios específicos, como desconto zero e envio em determinados estados.
+        /// Gera um relatório de pedidos baseado em critérios específicos, como desconto maior que zero e envio em determinados estados.
         /// </summary>
         [Fact]
         public async Task GetOrderReportAsync()
+        {
+            using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
+
+            // Query para selecionar pedidos com critérios específicos
+            var orders = await asyncSession.Query<Order>()
+                                           .Where(o => o.Shipping != null &&
+                                                       o.Shipping.Type != OrderShippingType.PickUp &&
+                                                       o.Shipping.Address != null &&
+                                                       o.Shipping.Address.UF.In(UF.RJ, UF.MG, UF.SP, UF.ES) &&
+                                                       o.Discount > 0)
+                                           .OrderByDescending(o => o.When)
+                                           .ToListAsync();
+
+            // Seleciona os dados relevantes do relatório
+            var select = orders.Select(o => new
+            {
+                o.Number,
+                o.When,
+                o.Items.Count,
+                o.TotalItemsCurrency,
+                o.DiscountPercent,
+                o.TotalCurrency,
+                o.Consumer.Name,
+                o.Shipping?.Type,
+                o.Shipping?.Status,
+                o.Shipping?.Address?.UF
+            });
+        }
+
+        /// <summary>
+        /// Gera um relatório de pedidos incluindo documentos associados, baseado em critérios específicos, como desconto maior que zero e envio em determinados estados.
+        /// </summary>
+        public async Task GetOrderIncludeReportAsync()
         {
             using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
 
@@ -532,7 +565,7 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
                                                        o.Shipping.Type != OrderShippingType.PickUp &&
                                                        o.Shipping.Address != null &&
                                                        o.Shipping.Address.UF.In(UF.RJ, UF.MG, UF.SP, UF.ES) &&
-                                                       o.Discount == 0)
+                                                       o.Discount > 0)
                                            .OrderByDescending(o => o.When)
                                            .ToListAsync();
 
