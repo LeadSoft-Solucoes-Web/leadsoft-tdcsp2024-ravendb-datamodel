@@ -771,7 +771,12 @@
         </member>
         <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.GetOrderReportAsync">
             <summary>
-            Gera um relatório de pedidos baseado em critérios específicos, como desconto zero e envio em determinados estados.
+            Gera um relatório de pedidos baseado em critérios específicos, como desconto maior que zero e envio em determinados estados.
+            </summary>
+        </member>
+        <member name="M:LeadSoft.TdcSP2024.RavenDB.DataModel.Tests.UnitTest.GetOrderIncludeReportAsync">
+            <summary>
+            Gera um relatório de pedidos incluindo documentos associados, baseado em critérios específicos, como desconto maior que zero e envio em determinados estados.
             </summary>
         </member>
     </members>

@@ -7,11 +7,11 @@
 		<Product>LeadSoft® TDC SP 2024 RavenDB Data Model Test</Product>
 		<RepositoryType>Bitbucket</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Description>LeadSoft® TDC SP 2024 RavenDB Data Model Test.</Description>
-		<RepositoryUrl>https://github.com/leadsoftlucas/leadsoft-tdcsp2024-ravendb-datamodel</RepositoryUrl>
+		<Description>LeadSoft® TDC SP 2024 RavenDB: NoSQL - Um pequeno passo na modelagem um grande salto na eficiência.</Description>
+		<RepositoryUrl>https://github.com/LeadSoft-Solucoes-Web/leadsoft-tdcsp2024-ravendb-datamodel</RepositoryUrl>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<PackageIcon>LeadSoft.png</PackageIcon>
-		<PackageProjectUrl>https://github.com/leadsoftlucas/leadsoft-tdcsp2024-ravendb-datamodel</PackageProjectUrl>
+		<PackageProjectUrl>https://www.leadsoft.inf.br/parceiros/ravendb</PackageProjectUrl>
 		<ApplicationIcon>LeadSoft.ico</ApplicationIcon>
 		<SignAssembly>False</SignAssembly>
 		<Nullable>enable</Nullable>

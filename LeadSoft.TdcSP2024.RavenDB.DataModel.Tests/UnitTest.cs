@@ -552,6 +552,7 @@ namespace LeadSoft.TdcSP2024.RavenDB.DataModel.Tests
         /// <summary>
         /// Gera um relatório de pedidos incluindo documentos associados, baseado em critérios específicos, como desconto maior que zero e envio em determinados estados.
         /// </summary>
+        [Fact]
         public async Task GetOrderIncludeReportAsync()
         {
             using IAsyncDocumentSession asyncSession = databaseFixture.Store.OpenAsyncSession();
