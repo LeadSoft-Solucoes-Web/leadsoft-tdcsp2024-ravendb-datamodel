@@ -1,8 +1,7 @@
 # leadsoft-tdcsp2024-ravendb-datamodel
 Repositório exemplo do Workshop TDC SP 2014: **NoSQL: Um pequeno passo na modelagem, um grande salto na eficiência**
 - Trilha NoSQL no dia 20 de setembro de 2024 no The Developer Conference São Paulo
-- Link no YouTube:
-  - (Em breve) 
+- Assista na íntegra a gravação no [YouTube](https://youtu.be/shoX67MMtLc):
 
 ## Conteúdo da apresentação
 
@@ -17,7 +16,7 @@ Repositório exemplo do Workshop TDC SP 2014: **NoSQL: Um pequeno passo na model
 - E meus dados, como ficam?
 - Quer saber mais como usar RavenDB?
 - Sobre o Palestrante
-  - https://www.leadsoft.inf.br/crew/lucas_tavares/contact
+  - [Lucas Tavares](https://www.leadsoft.inf.br/crew/lucas_tavares/contact)
 - A LeadSoft
   - Clientes que decolaram
   - Manifesto
