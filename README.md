@@ -1,7 +1,7 @@
 # leadsoft-tdcsp2024-ravendb-datamodel
 Repositório exemplo do Workshop TDC SP 2014: **NoSQL: Um pequeno passo na modelagem, um grande salto na eficiência**
 - Trilha NoSQL no dia 20 de setembro de 2024 no The Developer Conference São Paulo
-- Assista na íntegra a gravação no [YouTube](https://youtu.be/shoX67MMtLc):
+- Assista na íntegra a gravação no [YouTube](https://youtu.be/shoX67MMtLc).
 
 ## Conteúdo da apresentação
 
